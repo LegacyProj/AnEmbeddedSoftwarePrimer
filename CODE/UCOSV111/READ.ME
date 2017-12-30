@@ -1,0 +1,617 @@
+                          uC/OS, The Real-Time Kernel
+                              Companion Diskette
+
+                              uC/OS Version 1.11
+
+                                 READ ME FILE
+
+
+----------------------------- REPORTING PROBLEMS -----------------------------
+
+    If  you find a problem (i.e. bug) in uC/OS, do not  hesitate to report the
+problem to either:
+
+ 1) The publisher:
+
+        Miller Freeman, Inc. (R&D Books)
+        1601 West 23rd Street, Suite 200
+        Lawrence, Kansas 66046
+        (913) 841-1631
+        (913) 841-2624 (FAX)
+
+        INTERNET: rdorders@rdpub.com
+        WEB     : http://www.rdbooks.com
+
+ 2) Through CompuServe:
+
+        My CompuServe address is 72644,3724
+
+ 3) Through the INTERNET:
+
+        My INTERNET address is 72644.3724@compuserve.com or,
+                               Jean_Labrosse@compuserve.com
+
+ 4) By writing to me:
+
+        Jean J. Labrosse
+        9540 N.W. 9th Court
+        Plantation, FL 33324
+        U.S.A.
+
+ 5) By calling me (after 8PM Eastern time):
+
+        (954) 472-5094
+        (954) 472-7779, FAX
+
+    Make sure that the  problem  you are  reporting is in  uC/OS  and not your
+application.   If you in fact discover a bug in uC/OS, call the  publisher and
+see if they are shipping the same version of the code that you are using.
+
+    If you are  using  an  older  version,  you should  first  get the lastest
+version from the publisher.  Most likely,  the  bug  has been found by someone
+else  and  has  been  corrected.   In this case, you can obtain an  upgrade by
+contacting the publisher (see SOFTWARE UPGRADES).
+
+    If you have the same version as the publisher then you may have  uncovered
+a problem.   I will do my best to correct the problem and  get an  answer back
+to you as  quickly as  possible.   If you found a problem with uC/OS, you will
+get a FREE upgrade.
+
+/*$PAGE*/
+------------------------------ SOFTWARE UPGRADES -----------------------------
+
+    As you can see, I have been trying to support uC/OS.  When bugs are found,
+I do my best to correct them.   It is virtually impossible to notify everybody
+that purchased the code (i.e. the diskette) to tell them that a new version is
+available.    You  should  occasionally  check  with the publisher to see what
+version they are shipping. The cost to upgrade will be less than the price you
+paid for the  original  diskette.    You will, however, have to send back your
+original diskette to the publisher to get the upgrade price.
+
+    I will not be  upgrading the  publisher  everytime  I add new  features to
+uC/OS.  However, I will upgrade the publisher whenever a bug is discovered and
+fixed.
+
+    If you find a bug in the most recent release, you will get a FREE upgrade.
+
+    I  would  highly  suggest that you resist changing the  STYLE  of the code
+unless you don't mind spending many hours doing so everytime you upgrade.
+/*$PAGE*/
+--------------------- FEQUENTLY ASKED QUESTIONS / PROBLEMS -------------------
+
+ 1) My computer/processor 'hangs' when I run uC/OS!
+
+    An executable for uC/OS is provided on the diskette.  If uC/OS still hangs
+    with the  executable  provided on the floppy, try to contact me.  If uC/OS
+    does not  hang with the executable provided on the floppy then you need to
+    look  at  'OSIntCtxSw'  (see pages 62, 63 and 67 in  the  book)  which  is
+    processor specific.  The very first  instruction in 'OSIntCtxSw' may  need
+    some adjustment, i.e. ADD SP,6.  You will notice that for the SMALL memory
+    model,  the constant is 6 while for the LARGE model, it is 10!  If you use
+    another processor, compiler or memory model,  you may  need to  adjust the
+    constant.
+
+
+ 2) Where should I enable the 'tick' interrupt ?
+
+    You should  enable the tick  interrupt  AFTER you have started  uC/OS in a
+    'startup' task as shown in the  example  code.   This way, the OS is in  a
+    state ready to accept interrupts and can thus process interrupts.
+
+
+ 3) The executable on the floppy  works  fine  but when I compile with Borland
+    C++ V3.0, the program crashes ?
+
+    uC/OS was actually compiled with V3.1 and not V3.0.   You  may want to get
+    that version of the compiler (or higher).  I actually have  uC/OS  running
+    with V4.51.  In any event, try looking at item 1).
+
+
+ 4) Does uC/OS work with Microsoft C/C++ ?
+
+    Yes, you will have to adjust the  SP  offset  constant  (see item 1))  and
+    disable stack checking.   Others have used the  Microsoft compiler without
+    too many problems.
+
+/*$PAGE*/
+ 5) Are there other ports available for uC/OS ?
+
+    Yes.  uC/OS has been ported to a large number of  processors.   See 6) for
+    ports available from chip vendors.
+
+    You can contact me to obtain the port you are interrested in.
+
+/*$PAGE*/
+ 6) uC/OS ports available from microprocessor/microcontroller manufacturers?
+
+    a) Philips Semiconductors, Inc.
+       Processor   : XA
+       Description : The  Philips  Semiconductors XA  (eXtended  Architecture)
+                     family of  16-bit  microcontrollers  provides  an  upward
+                     compatibility  path  for  80C51  users  who  need  higher
+                     performance or more than 64K of program/data memory.
+
+                     The high-performance Philips XA supports the bit-oriented
+                     operations of the  80C51  while incorporating support for
+                     multitasking  operating  systems such as  uC/OS and high-
+                     level  languages such as C.   Existing  80C51 code can be
+                     translated to run on the XA.   The  speed  of  the XA, at
+                     least 10 to 100  times  greater  than  the  80C51,  gives
+                     designers an easy path to truly high performance embedded
+                     control.
+
+       App. Note   : You may also want to get a copy of AN-711, an application
+                     note I wrote for Philips describing how uC/OS was ported
+                     to the XA.
+
+       FTP Site    : ftp://ftp.ibsystems.com/pub/philips-mcu/bbs/xa/rtos
+       Filename    : UCOS_XA.EXE
+
+       BBS         : 1-800-451-6644
+                     1-408-991-2406
+                     31-40-2721102
+
+
+    b) VLSI Technology, Inc.
+       Processor   : ARM
+       Description : The ARM is a 32-bit RISC processor.
+       Contact     : Art Sobel
+                     408-434-7671
+                     art.sobel@sanjose.vlsi.com
+
+       FTP Site    : ftp.vlsi.com
+       Login       : armsw
+       Password    : JStart
+       Instructions: cd outpoing
+                     bin
+                     get uCOS.tar.gz
+                     bye
+
+/*$PAGE*/
+----------------------------- uC/OS RELEASE NOTES ----------------------------
+
+December 9, 1997: V1.11
+-----------------------
+
+ 1) Removed two lines in  IX86L_A.ASM,  function  OSStartHighRdy, because  the
+    code didn't do  anything.   This  was  reported  by  Mr Mike Hostetler  of
+    BITWORKS.
+
+ 2) Added  code  to save the  SS  register  in  EX1L.C.   This  ommission  was
+    reported by Mr Mike Hostetler of BITWORKS.
+
+ 3) Added a way for  OSTaskDelReq()  to  notify  its caller whether a task has
+    been deleted or not.   OSTaskDelReq() now returns OS_TASK_NOT_EXIST if the
+    requested task has been deleted and OS_NO_ERR if the task is still active.
+    This suggestion was provided by Mr Mike Hostetler of BITWORKS.
+    
+ 4) In ALL processor versions, OSTaskCreate() MUST be changed as follows.  The
+    code prevents other tasks from creating another task at the same priority,
+    at the same time.  This situation was very unlikely to happen because your
+    application  should not have been doing this in the  first  place  anyway.  
+    This condition was reported by Mr. Alain Chebrou.   
+
+    UBYTE OSTaskCreate(.....)
+    {
+        ???   *stk;
+        UBYTE  err;
+ 
+        OS_ENTER_CRITICAL();
+        if (OSTCBPrioTbl[p] == (OS_TCB *)0) {  
+            OSTCBPrioTbl[p] = (OS_TCB *)1;        <<< ADD this code!
+            OS_EXIT_CRITICAL();
+            .
+            .
+            .
+            if (err == OS_NO_ERR) {
+                if (OSRunning) {                 
+                    OSSched();
+                }
+            } else {                              <<< ADD this code!
+                OSTCBPrioTbl[p] = (OS_TCB *)0;    <<< ADD this code!   
+            }
+        }
+        .
+        .
+    }
+    
+
+July 18, 1997: V1.10
+--------------------
+
+ 1) The  local variable 'cnt' in the function  OSSemAccept()  should have been
+    declared UWORD instead of WORD.  This has now been corrected.
+
+ 2) I significantly improved the  performance of  the  test  code  by  writing
+    directly to video RAM of the PC.  This assumes that you have a VGA adapter
+    on your PC  (almost everybody does by now!).   If  you  have  a monochrome
+    adapter and the .EXE supplied on the  floppy  doesn't  work then, you  may
+    want  to  try  to  change  the  constant  0xB800 to 0xB000  in the display
+    functions (i.e. see TEST.C).
+
+ 3) Wrapped all the code associated with SEMAPHORES, MAILBOXES and QUEUES with
+    OS_SEM_EN, OS_MBOX_EN, and OS_Q_EN, respectively.
+
+ 4) Added comments to the code.
+
+ 5) A  bug  was  discovered  by Mr Leor Weinstein of PantaSoft.   The function
+    OSTimeDlyResume() has an error in the first assignment to ptcb as follows:
+        ptcb = (OS_TCB *)&OSTCBPrioTbl[prio];
+    should be:
+        ptcb = (OS_TCB *)OSTCBPrioTbl[prio];
+    same without '&'.
+
+ 6) Mr  Leor  Weinstein  also  suggested  that  some  code  and  variables  be
+    conditionally compiled in order to save memory.  This has been done.
+
+ 7) Mr  Daniel  Wisehart  suggested  that  the  PSW  of  80x86  processors  be
+    initialized to 0x0202 instead of 0x0200 as per required by Intel.
+
+ 8) Mr J. Picard  suggested  that  the  order of the MOV instruction for 80x86
+    processors w/r to loading and storing the  SS:SP  registers  in  the large
+    model be changed.  Thus, the following code has been changed from:
+       MOV  SP,ES:[BX]
+       MOV  SS,SS:[BX+2]
+    to:
+       MOV  SS,SS[BX+2]
+       MOV  SP,SS[BX]
+
+
+June 21, 1996: V1.09
+--------------------
+
+ 1) The configuration #defines found in UCOS.H have now been removed from this
+    file and moved  to a  new  file  called  OS_CFG.H  which is  assumed to be
+    application specific.   Also, all  processor specific #defines must now be
+    placed in the processor's .H file.  I thus intend to have OS_CFG.H contain
+    all PRODUCT specific #defines while the processor's .H file  will  contain
+    NON-PRODUCT specific #defines and macros (i.e. processor specific code).
+
+ 2) Mr. Uri Sabadosh reported a problem with  OSMboxPend()  and  OSQPend().  A
+    race  condition exist in the  following scenario.   There are two tasks, 8
+    and 9.   Task 9 PENDs on mailbox 'Mbox' with a timeout. The ticker readies
+    task 9 because the timeout has elapsed but, before task 9 gets a chance to
+    run, task 8 (higher priority) POSTs a message into 'Mbox'.  At that point,
+    task 9  has timed out  waiting for the  message but,  the message has been
+    placed in task's 9 OS_TCB.   When  task  9 got to execute it checked for a
+    timeout instead of checking for a message first.   In  this  scenario, the
+    message was lost!  The problem has been corrected.
+
+ 3) I added the test files for the LARGE model of the Intel  80x86.   You will
+    find these files in the \SOFTWARE\UCOS\EX1_X86L directory.
+
+
+July 21, 1995: V1.08
+--------------------
+
+ 1) The following changes have been implemented to support futur  enhancements
+    to uC/OS and to correct a bug.  The overall  functionality  of  uC/OS  has
+    otherwise not been changed in this version from V1.07.
+
+ 2) V1.08 corrects a bug reported by  Mr Gene Chouiniere  on 6/9/95.   The bug
+    occurs when a task pends on a  queue  or a  mailbox  with a timeout and is
+    subsequently suspended by another task.   If OSTimeTick()  decrements  the
+    timeout to 0 before the  suspension  is  removed  the  task  is  not  made
+    ready-to-run by OSTaskResume()  and the task thus 'hangs'.  The correction
+    was to make OSTimeTick() leave 1 tick if the task is suspended.   The task
+    will be made ready-to-run  on the next tick  following the  removal of the
+    suspension.
+
+ 3) Changed 'far' to 'OS_FAR'.   This allows the keyword 'far' to be used in a
+    different context than the one assumed by Intel for the x86 processors.
+
+ 4) Added the  #define  OS_IDLE_TASK_STK_TOP  (see UCOS.H)  which  is  used to
+    define the index into  OSTaskIdleStk[]  where  the  top  of  stack starts.
+    This has been done to support  processors that have stacks starting at low
+    memory and which grows upwards as opposed to downwards.
+    OS_IDLE_TASK_STK_TOP  is  used  in  OSInit()  to  initialize the idle task
+    stack.
+
+ 5) Added  the  #define  OS_STK_TYPE (see UCOS.H) to define the data type used
+    for stacks.  This has been done  because some  processors work better when
+    stacks are WORD alligned or LONG alligned as opposed to BYTE alligned.
+
+ 6) Added the  #define  OS_EXT (see UCOS.H)  which is used to  declare  GLOBAL
+    variables  when  UCOS.C  is  compiled  and  declare the same  variables as
+    'extern' for all other compiled files.
+
+ 7) 'OSIntNesting' has been declared 'global' instead of 'local'.  This allows
+    you to INCREMENT OSIntNesting in your ISR instead of calling OSIntEnter().
+    The reason I did this is twofold.  First, some processors (ex. 68HC11) can
+    increment a variable using an indivisible instruction (a read-modify-write
+    instruction) which  is  considerably  faster  than  calling  OSIntEnter().
+    Second,  calling   OSIntEnter()  causes  interrupts  to  be  enabled  upon
+    returning from OSIntEnter() which is undesirable for a  processor like the
+    68HC11.   For the  68HC11, you MUST  clear  the  interrupt  source  BEFORE
+    re-enabling interrupts!
+
+/*$PAGE*/
+March 6, 1995: V1.07
+--------------------
+
+ 1) In  OSTaskDel(),  OSTaskDelSelf() and  OSTaskSuspend() the coded needed to
+    check that you had not specified OS_PRIO_SELF in the following code:
+        if (prio >= OS_MAX_TASKS)
+    because OS_PRIO_SELF is 0xFF and is thus always greater than OS_MAX_TASKS.
+    The new code looks like this:
+        if (prio >= OS_MAX_TASKS && prio != OS_PRIO_SELF)
+    Thanks to Mr George Dinwiddie for reporting this problem.
+ 2) OSSemCreate()  is now passed a UWORD instead of a WORD.  This allows up to
+    65535 events to be  accumulated.  Because semaphores are now UWORDS, there
+    is no need for  OSSemCreate() to check  for  cnt >= 0.   OSSemAccept() now
+    returns a UWORD instead of a WORD.
+ 3) The  return  data  type for  OSTaskDelReq()  is now a  UBYTE  instead of a
+    BOOLEAN.  If 'prio' is set to OS_PRIO_SELF, OSTaskDelReq() returns:
+         OS_NO_ERR       if no task requested that the task delete itself
+         OS_TASK_DEL_REQ if a  task requested that the task delete itself
+     If 'prio' is set to OS_LO_PRIO, OSTaskDelReq() returns OS_TASK_DEL_IDLE.
+     If 'prio' is not set to OS_LO_PRIO or to OS_PRIO_SELF then OSTaskDelReq()
+     places a  request  to  the  desired  task to  delete  itself when it gets
+     control of the CPU.
+
+/*$PAGE*/
+July  1, 1994: V1.06
+--------------------
+
+ 1) This version  corrects a  problem that was found by   Mr Sai Kolluri  from
+    Behring Diagnostics.   The problem occurs during the following sequence of
+    events:
+        1) A  low  priority  task  executes  and then pends on a  mailbox or a
+           queue.
+        2) A higher priority task then runs. This higher priority task posts a
+           message to either the mailbox or the queue.
+        3) Posting makes the lower priority task ready to run.
+        4) The higher priority task  then  pends on the  mailbox or the queue.
+        5) Because there is something in the queue, the  higher  priority task
+           receives the message.
+        6) The  higher priority task delays itself (calls OSTimeDly()).
+        7) The lower priority task then gets to run because it was made  ready
+           by the higher priority task.   However, because the higher priority
+           task got  the  message  the  lower  priority  task will get a  NULL
+           pointer  (which is not good!).   At  this point, the lower priority
+           task could behave eratically.
+    This  problem has  been  corrected and in doing so, the  mailbox and queue
+    functions became more efficient.
+
+ 2) OSTaskChangePrio(),  OSTaskDel(),  OSTaskDelReq() and  OSTaskSuspend() now
+    check to make sure that the specified priority is less than 63.
+
+
+June 10, 1994: V1.05
+--------------------
+
+ 1) This  version  corrects two bugs that were found by  Mr Tom Campbell  from
+    GC Associates.
+
+ 2) Specifically, the  semaphore  count  should  not  have  been   decremented
+    immediately  because  the  pending  task  could  be  made  ready to run by
+    OSTimeDly() and thus, the count would be  incorrectly reduced by 1.   This
+    prompted  me  to  rewrite  the  semaphore  management  functions and also,
+    integrate   OSEventTaskResume()  in   all  OS???Post()  functions.   Also,
+    OSEventCnt is no longer decremented when a task is suspended because there
+    is no need to anymore.
+
+ 3) As mentionned above, I removed the function OSEventTaskResume().  Instead,
+    the  code  from  this  function  has  been   integrated  in   OSSemPost(),
+    OSMboxPost() and OSQPost().  This change increases the code size of  uC/OS
+    in exchange for improved execution speed.
+/*$PAGE*/
+May 26, 1994: V1.04
+-------------------
+
+ 1) This  version  does  not correct  any bugs since none have been  reported.
+
+ 2) By specifying  OS_PRIO_SELF  as an argument to  OSTaskDel(),  you can  now
+    delete the calling task.  In other words, by making the following function
+    call:
+
+        OSTaskDel(OS_PRIO_SELF);
+
+    you basically indicate that you want to delete the calling task.
+
+ 3) Added the  function  OSTaskDelReq()  which  allows a  task to request that
+    another task deletes itself (see description in the code).
+
+ 4) Added  functions to  suspend  and  resume  a  task:   OSTaskSuspend()  and
+    OSTaskResume().
+
+ 5) Improved the execution  speed of  OSTaskChangePrio() (by ~30%).  Interrupt
+    disable  time of OSTaskChangePrio() has also improved: It's now 400 cycles
+    (80186 Small Model) instead of 500.
+
+ 6) Reduced  the amount of time that  OSTaskDel()  disables interrupts.  Also,
+    rescheduling only occurs when the task being  deleted is the current task.
+    This avoid a  context switch if the current task is deleting another task.
+
+ 7) Modified how uC/OS handles  OSTCBStat.   OSTCBStat now uses bits to define
+    whether a task is waiting for a semaphore, a mailbox, a queue or whether a
+    task  has  been  suspended.   This  has  been  done  in  order  to support
+    OSTaskSuspend() and OSTaskResume().
+/*$PAGE*/
+July 14, 1993: V1.03
+--------------------
+
+ 1) This  version  does  not  correct  any bugs since none have been reported.
+
+ 2) The EX1 and EX2 directories  have been  renamed to EX1_x86S and  EX2_x86S,
+    respectively to  make it clear that the  examples are for the  Intel 80x86
+    processors SMALL model.   Note that the examples are for either an   Intel
+    80186/88,  80286,  80386 or 80486 (not for an 8086/88).   Also, the  EX1.*
+    and  EX2.* files have been  renamed to EX1S.* and EX2S.*, respectively.
+
+ 3) Unused code and functionality can now be disabled by setting the following
+    #define from 1 to 0 in UCOS.H:
+        OS_TASK_CHANGE_PRIO_EN
+        OS_TASK_DEL_EN
+        OS_SEM_EN
+        OS_MBOX_EN
+        OS_Q_EN
+
+ 4) Added OSTimeDlyResume() to resume a  delayed task.   The delayed task must
+    have  been  delayed by  calling  OSTimeDly().  A task waiting for an event
+    should not be resumed by calling OSTimeDlyResume() because this would make
+    it look  like a  timeout  occurred to the  task  pending for a  SEMAPHORE,
+    MAILBOX or QUEUE.
+
+ 5) Added  OSTCBCur = OSTCBHighRdy  in  OSStart()  to  reduce  the  amount  of
+    assembly language code in the target specific files.
+
+ 6) Changed 'p' to 'prio' for consistency in UCOS.C
+
+ 7) Added OSSemAccept() which allow you to obtain a  resource  without pending
+    the calling  task if the  semaphore count is less than or equal to 0.
+
+ 8) OSMboxAccept()  which  allow you to  obtain a  message  from  the  mailbox
+    without pending the calling task if the mailbox is empty.
+
+ 9) Added OSQAccept() which allow you to obtain a message from a queue without
+    pending the calling task if the queue is empty.
+
+10) Added more comments to UCOS.C.
+
+11) Improved OSTCBInit() (code size and speed).
+
+12) Files 80186S.H, 80186S_A.ASM and 80186S_C.C  have been changed to Ix86S.H,
+    Ix86S_A.ASM and Ix86S_C.C,  respectively.   This has been done for sake of
+    consistency with the large model.   Also, the 'I' indicates that the  code
+    is for an Intel  processor.   The 'x' means that the code will work for an
+    80186, 80286, 80386 and 80486.  I hope this does not inconvenience you too
+    much.
+
+13) Files I186L.H, I186L_A.ASM  and  I186L_C.C  have  been changed to Ix86L.H,
+    Ix86L_A.ASM and  Ix86L_C.C, respectively.   This has been done for sake of
+    consistency.    Also, the 'I'  indicates  that  the code is  for  an Intel
+    processor.    The 'x'  means that the code will work for an  80186, 80286,
+    80386 and 80486.   I hope  this does not inconvenience you too much.
+
+14) The  function NewTickISR() has been changed to OSTickISR(). OSTickISR() is
+    now  found in Ix86S_A.ASM for the SMALL model and in file Ix86L_A.ASM  for
+    the LARGE model.  This reduces the file count by one.
+/*$PAGE*/
+June 3, 1993: V1.02
+-------------------
+
+1) One line was  missing in  the  all  of  the  PEND  functions:  OSSemPend(),
+   OSMboxPend() and OSQPend().  The code missing is given below:
+
+       OSTCBCur->OSTCBEventPtr = pevent;
+
+   This  omission  only   affected  the   functions   OSTaskChangePrio()   and
+   OSTaskDel(). This has been corrected. Thank you Mr Chris Thorne from COMSAT
+   for pointing out this errata.
+
+
+December 21, 1992: V1.01
+------------------------
+
+1) Some computers have problems  running  the two  examples  provided  in  the
+   book.  This problem is due to slow video adapters and DOS.  To correct this
+   problem,  the  DS  register  must be saved on the  stack during an ISR or a
+   context switch.   The following files have been changed accordingly:
+       80186S_A.ASM
+       80186S_C.C
+       TICK.ASM      (In both EX1 and EX2)
+
+2) OSTCBStkPtr  in  OS_TCB (file UCOS.H) is now a 'far'  pointer.   Also,  the
+   maximum number of tasks in UCOS.H has been increased to 64.
+
+3) EX1.C Now creates 62  identical  tasks instead of just 10.  This is done to
+   better show uC/OS's  capabilities.   On  my 386/16, the CPU usage was close
+   to 90%! Note that the high CPU utilization is mostly attributed to DOS call
+   to write to the screen and not uC/OS.
+
+4) The source code for the  80186/80188  LARGE  memory model has been included
+   and  is  found  in  the  \SOFTWARE\UCOS\80186L  directory.   Note  that the
+   performance data is not yet  available.   Note that the  source  files  are
+   I186L_A.ASM, I186L_C.C and I186L_C.H.
+
+
+September 9, 1992: V1.00
+------------------------
+
+1) For  future  compatibility,  I  would  recommend  that  you do not use task
+   priorities 0..4 and 60..62.   I am reserving these task priorities for such
+   things as CPU usage and debug.   Your  application  can  thus have up to 55
+   tasks!
+
+2) OSTCBInit() has been changed to reduce the amount of  time  interrupts  are
+   disabled.  The functionality is the same.
+/*$PAGE*/
+------------------------ EMBEDDED SYSTEMS BUILDING BLOCKS --------------------
+                      Complete and Ready-to-Use Modules in C
+
+    My new book is availabe from R&D Publications (913-841-1631). This book is
+like  a  library  of  portable  modules  specifically  designed  for  embedded
+systems.
+
+    The book assumes that you are using  uC/OS  but most  (if not all)  of the
+code can be ported to just about any other real-time kernel. The book contains
+the following modules:
+
+    1) Keyboard scanning routine
+           Scans keyboard matrices from 3x3 to 8x8
+               (but can be easily expanded to support larger keyboards)
+    2) Multiplexed LED driver
+           Controls LED matrices from 2x2 to 8x8
+               (but can be easily expanded to support larger arrays)
+    3) Character LCD module driver
+           Any character LCD module based on the Hitachi HD44780 chip.
+    4) Clock/calendar module
+           Hours, Minutes, Seconds
+           Month, Day, Year
+           Time stamps
+    5) Timer manager module
+           You can have up to 250 countdown timers.
+           Each timer has a resolution of 1/10 sec.
+           Each timer can timeout after 99 minutes and 59.9 seconds
+           When a timer times out, a function can be executed.
+    6) Discrete I/O manager
+           Manages up to 250 discrete inputs and 250 discrete outputs
+           Discrete input channels can:
+               - Detect lows,
+               - Detect highs,
+               - Detect transitions and execute a function
+               - Count transitions
+                     (low to high or high to low or both)
+               - Toggle ON, toggle OFF
+           Discrete output channels can:
+               - Turn an output ON or OFF
+               - Blink an output
+    7) Analog I/O manager
+           Manages up to 250 analog inputs and 250 analog outputs
+           Converts ADC counts to Engineering Units
+           Convert Engineering Units to DAC counts
+           Each channel can call a linearization function that you
+               define.
+    8) Asynchronous serial I/O driver
+           Provides an interrupt driven driver for COM1 and COM2 on the PC.
+           Provides input and output buffering.
+           The code can be easily ported to other serial devices.
+/*$PAGE*/
+    The book also contains a revised chapter on 'Real-Time Concepts' and  also
+a chapter discussing fixed-point math.
+
+    The emphasis of this book is  that you  should be  able to  use  the  code
+'as is' in your embedded application.   To that effect, a diskette IS included
+with the book and contains all the  source code  (mostly in C).   The book and
+the diskette cost only $39.95.
+
+    I also give you the execution time of just about every function  (assuming
+an Intel 80386 running at 16 MHz) so that you can  forecast the  CPU  usage of
+your application.  This is  especially useful if you are designing for the new
+Intel 386EX processor.   I also list the  amount of  ROM and RAM  required for
+each module.    For  just  about every  function, I also provide the amount of
+stack required to allow you to  determine how much stack space each task needs
+to allocate.
+
+    This is the only book of its kind. If you write code for embedded systems,
+this book is for you.
+
+    If you liked "uC/OS, The Real-Time Kernel", you will love this one!
+
+
+
+Thanks for your support,
+
+
+Jean J. Labrosse

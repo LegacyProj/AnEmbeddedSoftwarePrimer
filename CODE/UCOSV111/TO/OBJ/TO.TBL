@@ -1,0 +1,14 @@
+A,          ..\SOURCE
+C,          ..\SOURCE
+D,          ..\DOC
+L,          ..\LST
+O,          ..\OBJ
+P,          ..\PROD
+W,          ..\WORK
+EX1L,       \SOFTWARE\uCOS-II\EX1_x86L
+EX2L,       \SOFTWARE\uCOS-II\EX2_x86L
+EX3L,       \SOFTWARE\uCOS-II\EX3_x86L
+Ix86L,      \SOFTWARE\uCOS-II\Ix86L
+LISTC,      \SOFTWARE\LISTC\SOURCE
+TO,         \SOFTWARE\TO\SOURCE
+uCOS-II,    \SOFTWARE\uCOS-II\SOURCE
